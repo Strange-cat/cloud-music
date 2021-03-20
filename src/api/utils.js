@@ -6,6 +6,8 @@
  * @Description: In User Settings Edit
  * @FilePath: \cloud-music\src\api\utils.js
  */
+
+// 数量转换
 export const getCount = (count) => {
   if (count < 0) return;
   if (count < 10000) {
@@ -29,4 +31,13 @@ export const debounce = (func, delay) => {
       clearTimeout(timer);
     }, delay);
   };
+};
+
+// 处理数据，找出第一个没有歌名的排行榜的索引
+export const filterIndex = (rankList) => {
+  for (let i = 0; i < rankList.length - 1; i++) {
+    if (rankList[i].tracks.length && !rankList[i + 1].tracks.length) {
+      return i + 1;
+    }
+  }
 };
