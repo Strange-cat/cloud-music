@@ -9,6 +9,7 @@ import style from "../../assets/global-style";
 import { connect } from "react-redux";
 import { getAlbumList, changeEnterLoading } from "./store/actionCreators";
 import Loading from "../../baseUI/loading";
+import { HEADER_HEIGHT } from "./../../api/config";
 
 function Album(props) {
   const id = props.match.params.id;
@@ -19,7 +20,6 @@ function Album(props) {
   const [showStatus, setShowStatus] = useState(true);
   const [isMarquee, setIsMarquee] = useState(false); // 是否跑马灯
   const headerEl = useRef();
-  const HEADER_HEIGHT = 45;
 
   useEffect(() => {
     getAlbumDataDispatch(id);
